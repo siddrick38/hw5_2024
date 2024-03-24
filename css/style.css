@@ -1,0 +1,152 @@
+/* adding keyframe animation to grow title - #1*/
+@keyframes mymove {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+/* change font and background image */
+body {
+  font-family: "Poppins", serif;
+  background-image: url("../images/concrete_seamless.png");
+  background-color: #f1f1f1;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav_links {
+  display: flex;
+  flex-direction: column;
+}
+
+/* links are the same color after being visited - #5 */
+header a:visited {
+  color: blue;
+}
+
+/* for keystroke animation */
+header img {
+  position: relative;
+  animation: mymove 5s linear;
+}
+
+.card > header {
+  background: #288088;
+  border: 2px solid #45adad;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 50px 50px 0px 0px;
+}
+
+/* #7 */
+.card {
+  flex: 0 0 450px;
+  border-radius: 50px 50px 0px 0px;
+}
+
+/* #8 */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery img {
+  border: 10px solid #50c7c7;
+  margin: 10px;
+  width: 300px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* media query for 900px or larger */
+@media screen and (min-width: 900px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav_links {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .pricing {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    flex-basis: 275px;
+  }
+
+  body > header {
+    top: 0;
+    position: sticky;
+    width: 100%;
+  }
+}
+
+/* media query for reduced motion */
+@media (prefers-reduced-motion) {
+  header img {
+    animation-duration: 0s;
+  }
+}
+
+/* media query for print mode */
+@media print {
+  body {
+    font-family: Arial, Helvetica;
+    background-image: none;
+  }
+
+  header {
+    display: block;
+    text-align: center;
+  }
+
+  .nav_links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .pricing {
+    flex-wrap: nowrap;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .card {
+    flex: 0 1 325px;
+    border: 2px solid #45addd;
+  }
+
+  #gallery {
+    display: none;
+  }
+
+  .gallery {
+    display: none;
+  }
+
+  /* thumbs up entity displaying only for print */
+  .card ul li:nth-child(2)::after {
+    content: "\1F44D";
+    font-size: 25px;
+  }
+}
